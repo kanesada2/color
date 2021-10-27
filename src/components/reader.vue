@@ -21,12 +21,18 @@ export default defineComponent({
         onMounted(()=>{
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+                    if(!videoRef.value){
+                        return;
+                    }
                     videoRef.value.srcObject = stream
                     videoRef.value?.play()
                 })
             }
         })
         function snap() {
+            if(!videoRef.value){
+                return;
+            }
             const context = canvasRef.value?.getContext('2d')
             context?.drawImage(videoRef.value, 0, 0, 1, 1)
             const colorData = context?.getImageData(0,0,1,1)
