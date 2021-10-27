@@ -1,0 +1,21 @@
+{
+  "name": "color",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "gh-pages": "^3.2.3",
+    "typescript": "^4.4.3",
+    "vite": "^2.6.4",
+    "vue-tsc": "^0.3.0"
+  }
+}
