@@ -1,6 +1,6 @@
 <template>
     <div :style="{ backgroundColor: rgba }">
-        <video ref="videoRef"></video>
+        <video class="video" ref="videoRef"></video>
         <canvas ref="canvasRef"></canvas>
         <div>
             <button @click="snap">取得</button>
@@ -20,7 +20,7 @@ export default defineComponent({
         
         onMounted(()=>{
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+                navigator.mediaDevices.getUserMedia({ video: {facingMode: { exact: "environment" }}}).then(stream => {
                     if(!videoRef.value){
                         return;
                     }
@@ -46,6 +46,12 @@ export default defineComponent({
 })
 </script>
 <style scoped>
+* {
+    text-align: center;
+}
+.video {
+    width: 90vw;
+}
 .indicator {
     color: #fff;
     font-weight: bold;
